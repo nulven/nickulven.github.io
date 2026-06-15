@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Foundation - Nick Ulven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="spotlight" id="spotlight"></div>
+
+    <div class="subpage-wrapper">
+        <div class="page-header">
+            <a href="/" class="back">&larr; Nick Ulven</a>
+            <h1>Ethereum Foundation</h1>
+            <div class="role">Researcher</div>
+            <div class="meta">Cambridge, MA &middot; Dec 2020 &ndash; Aug 2021</div>
+        </div>
+
+        <div class="description">
+            <p>I spent about nine months at the Ethereum Foundation exploring what you can actually build with zero-knowledge proofs beyond just scaling. The core question was: can ZK-SNARKs enable new kinds of applications where privacy is a feature, not a workaround?</p>
+            <p>The answer turned out to be yes, but the developer experience was rough. Circom circuits, trusted setup ceremonies, and Solidity verifiers all had to be wired together manually. Each project below was an experiment in pushing that stack into a working application &mdash; anonymous posting, private voting, encrypted data sales, and a developer tool for generating proofs in the browser.</p>
+            <p>Alongside the engineering work, I helped build out educational resources for people new to crypto and organized speaker series and learning sessions within the Foundation.</p>
+        </div>
+
+        <h3 class="section-heading">ZK Projects</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/nulven/EthDataMarketplace" target="_blank">
+                    <div class="project-name">EthDataMarketplace <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">An on-chain marketplace for selling encrypted data. Sellers generate a ZK proof that their data satisfies certain properties (size, format, content hashes) without revealing it. Buyers pay into a smart contract, and the seller reveals a decryption key &mdash; with the proof guaranteeing the key actually unlocks the promised content. No trusted intermediary required.</div>
+                    <div class="project-meta">
+                        <span class="stars">93</span>
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/nulven/zk-polling" target="_blank">
+                    <div class="project-name">zk-polling <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">Anonymous voting for on-chain groups. Members register their public key in a Solidity contract, then submit votes with a ZK-SNARK proving they belong to the group without revealing which member they are. Prevents double-voting while maintaining full voter privacy.</div>
+                    <div class="project-meta">
+                        <span class="stars">35</span>
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/nulven/zk-message-board" target="_blank">
+                    <div class="project-name">zk-message-board <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">A message board where posts are anonymous but authenticated. Users register a hashed EdDSA public key on a Solidity contract, then post messages alongside a ZK proof of group membership. Anyone can verify a post came from a registered member, but nobody can tell which one.</div>
+                    <div class="project-meta">
+                        <span class="stars">33</span>
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/nulven/zk-browser" target="_blank">
+                    <div class="project-name">zk-browser <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">A browser-based developer tool for working with zero-knowledge circuits. Compile Circom circuits, generate and verify proofs, and inspect verification keys &mdash; all client-side. Built to lower the barrier to entry for developers experimenting with ZK for the first time.</div>
+                    <div class="project-meta">
+                        <span class="stars">14</span>
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p><a href="/">&larr; Back to home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', e => {
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>

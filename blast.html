@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blast - Nick Ulven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="spotlight" id="spotlight"></div>
+
+    <div class="subpage-wrapper">
+        <div class="page-header">
+            <a href="/" class="back">&larr; Nick Ulven</a>
+            <h1>Blast</h1>
+            <div class="role">Founding Engineer</div>
+            <div class="meta">Los Angeles, CA &middot; Aug 2023 &ndash; Present</div>
+        </div>
+
+        <div class="description">
+            <p>Blast is an Ethereum L2 with native yield &mdash; ETH and stablecoins deposited into the bridge automatically earn yield from Lido staking and MakerDAO's DSR. I joined as the first engineer and built most of the core protocol infrastructure from scratch.</p>
+            <p>The central challenge was designing a bridge that could custody billions in user assets while routing them into yield strategies transparently and securely. This meant building custom yield manager contracts that interface with Lido and MakerDAO, a deterministic withdrawal system so users can always exit even under adversarial conditions, and an L2 output oracle for proving state on L1.</p>
+            <p>I led the full lifecycle: architecture design, implementation, coordinating multiple external security audits, and the production mainnet deployment. At peak, the bridge held over $2B in TVL across ETH and stablecoins.</p>
+        </div>
+
+        <h3 class="section-heading">Open Source</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/blast-io/blast" target="_blank">
+                    <div class="project-name">blast <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">The full Blast L2 stack &mdash; a modified Optimism fork with custom geth changes for native yield rebasing, blast-specific bridge contracts, and precompiles. Contains both the node software (Go) and the L1/L2 smart contracts (Solidity).</div>
+                    <div class="project-meta">
+                        <span class="stars">103</span>
+                        <span>Go / Solidity</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/blast-io/deployment" target="_blank">
+                    <div class="project-name">deployment <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">Docker-based deployment tooling for running Blast nodes. Includes configurations for both mainnet and Sepolia testnet, environment templates, and docker-compose orchestration for spinning up full L2 infrastructure.</div>
+                    <div class="project-meta">
+                        <span class="stars">81</span>
+                        <span>Docker</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">L1 Contracts (Ethereum)</h3>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x3a05E5d33d7Ab3864D53aaEc93c8301C1Fa49115" target="_blank">
+                        <span class="contract-name">L1BlastBridge</span>
+                        <span class="contract-address">0x3a05...9115</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x0Ec68c5B10F21EFFb74f2A5C61DFe6b08C0Db6Cb" target="_blank">
+                        <span class="contract-name">OptimismPortal</span>
+                        <span class="contract-address">0x0Ec6...b6Cb</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x98078db053902644191f93988341E31289E1C8FE" target="_blank">
+                        <span class="contract-name">ETHYieldManager</span>
+                        <span class="contract-address">0x9807...8FE</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0xa230285d5683C74935aD14c446e137c8c8828438" target="_blank">
+                        <span class="contract-name">USDYieldManager</span>
+                        <span class="contract-address">0xa230...8438</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x826D1B0D4111Ad9146Eb8941D7Ca2B6a44215c76" target="_blank">
+                        <span class="contract-name">L2OutputOracle</span>
+                        <span class="contract-address">0x826D...5c76</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x697402166Fbf2F22E970df8a6486Ef171dbfc524" target="_blank">
+                        <span class="contract-name">L1StandardBridge</span>
+                        <span class="contract-address">0x6974...c524</span>
+                    </a>
+                </div>
+            </div>
+
+            <h3 class="section-heading">L2 Contracts (Blast)</h3>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <span class="contract-name">L2BlastBridge</span>
+                    <span class="contract-address">0x4300...0005</span>
+                </div>
+                <div class="contract-item">
+                    <span class="contract-name">USDB</span>
+                    <span class="contract-address">0x4300...0003</span>
+                </div>
+                <div class="contract-item">
+                    <span class="contract-name">WETH</span>
+                    <span class="contract-address">0x4300...0004</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><a href="/">&larr; Back to home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', e => {
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>

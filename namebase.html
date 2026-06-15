@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namebase - Nick Ulven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="spotlight" id="spotlight"></div>
+
+    <div class="subpage-wrapper">
+        <div class="page-header">
+            <a href="/" class="back">&larr; Nick Ulven</a>
+            <h1>Namebase</h1>
+            <div class="role">Software Engineer</div>
+            <div class="meta">San Francisco, CA &middot; Jan 2020 &ndash; Aug 2020</div>
+        </div>
+
+        <div class="description">
+            <p>Namebase was the primary marketplace and registrar for Handshake, a decentralized alternative to ICANN's domain name system. Instead of a central authority controlling who owns top-level domains, Handshake puts them on a blockchain where ownership is settled through proof-of-work auctions.</p>
+            <p>I built the domain transfer marketplace, which let users buy and sell Handshake names using either BTC or USD. This required coordinating blockchain transactions with fiat payment flows and handling the escrow logic for trustless transfers between strangers.</p>
+            <p>On the infrastructure side, I worked on the crypto wallet's coin-selection algorithm &mdash; the logic that decides which UTXOs to spend when constructing a transaction. The original implementation didn't scale well as wallets accumulated thousands of small outputs, so I redesigned it to batch and consolidate more efficiently.</p>
+            <p>I also modified the Handshake full node to serve DNS queries directly from nameservers, which let us host over 10k domains without a separate resolution layer, and built a DNS gateway that resolved Handshake names backed by content on IPFS and other decentralized storage networks.</p>
+        </div>
+
+        <footer>
+            <p><a href="/">&larr; Back to home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', e => {
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starkware - Nick Ulven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="spotlight" id="spotlight"></div>
+
+    <div class="subpage-wrapper">
+        <div class="page-header">
+            <a href="/" class="back">&larr; Nick Ulven</a>
+            <h1>Starkware</h1>
+            <div class="role">Smart Contract Engineer</div>
+            <div class="meta">Remote &middot; Sep 2021 &ndash; Sep 2022</div>
+        </div>
+
+        <div class="description">
+            <p>MakerDAO needed a way to move DAI between Ethereum and StarkNet without trusting a centralized operator. I was part of a small contracted team that built this bridge from the ground up &mdash; one of the first serious cross-chain integrations on StarkNet.</p>
+            <p>The L2 side was written in Cairo, StarkNet's native language for provable computation. At the time, Cairo tooling was extremely early &mdash; no package manager, minimal documentation, and a programming model built around algebraic execution traces rather than conventional control flow. Building production contracts in that environment meant working through a lot of uncharted territory.</p>
+            <p>Beyond the core bridge, I built the operational infrastructure around it: a keeper bot that finalizes pending cross-chain transfers, an oracle that relays Maker price feeds from L1 to L2, and a monitoring system that tracks teleport operations across both chains. I also designed the emergency recovery mechanisms &mdash; fallback paths that let users withdraw their DAI even if the L2 sequencer goes offline.</p>
+        </div>
+
+        <h3 class="section-heading">Open Source</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/nulven/starknet-dai-keeper" target="_blank">
+                    <div class="project-name">starknet-dai-keeper <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">Automated keeper service that watches for pending DAI transfers between Ethereum and StarkNet, then submits the finalization transactions to complete the cross-chain settlement. Runs continuously and handles retries, gas estimation, and nonce management.</div>
+                    <div class="project-meta">
+                        <span class="stars">1</span>
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/nulven/starknet-dai-oracle" target="_blank">
+                    <div class="project-name">starknet-dai-oracle <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">Relays Maker oracle price feeds from Ethereum L1 to StarkNet L2, enabling on-chain price data for DAI stability mechanisms and liquidation triggers on the L2 deployment.</div>
+                    <div class="project-meta">
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/nulven/starknet-teleport-monitoring" target="_blank">
+                    <div class="project-name">starknet-teleport-monitoring <span class="arrow">&nearr;</span></div>
+                    <div class="project-desc">Observability layer for the DAI teleport system. Tracks cross-chain message status, detects stuck or failed transfers, and provides dashboards for bridge operators to monitor the health of the L1&harr;L2 pipeline.</div>
+                    <div class="project-meta">
+                        <span>TypeScript</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p><a href="/">&larr; Back to home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', e => {
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>
