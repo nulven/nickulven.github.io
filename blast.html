@@ -23,36 +23,53 @@
 
         <div class="description">
             <p>Blast is an Ethereum L2 with native yield &mdash; ETH and stablecoins deposited into the bridge automatically earn yield from Lido staking and MakerDAO's DSR. I joined as the first engineer and built most of the core protocol infrastructure from scratch.</p>
-            <p>The central challenge was designing a bridge that could custody billions in user assets while routing them into yield strategies transparently and securely. This meant building custom yield manager contracts that interface with Lido and MakerDAO, a deterministic withdrawal system so users can always exit even under adversarial conditions, and an L2 output oracle for proving state on L1.</p>
+            <p>The core architecture is a modified OP Stack bridge where deposited assets don't sit idle. ETH gets staked through Lido and stablecoins are deposited into MakerDAO's DSR, with the yield flowing back to L2 users through rebasing token contracts. The tricky part is making this transparent and safe &mdash; users on L2 hold WETH and USDB tokens whose balances automatically reflect yield earned on L1, without any manual claiming or compounding.</p>
+            <p>The yield managers on L1 are the proprietary contracts that handle this. They route deposited assets into yield strategies, track accrued returns, and coordinate with the bridge to report yield back to L2. They also handle the insurance layer &mdash; if Lido were to experience a slashing event or other loss, the yield managers have mechanisms to absorb negative yield and protect user principal rather than passing losses directly through to L2 balances.</p>
+            <p>On the L2 side, WETH, USDB, and nrETH are custom token implementations that support rebasing. Unlike standard ERC-20s where balances are static, these tokens adjust every user's balance proportionally when new yield is reported from L1. This required careful design around share-based accounting to handle edge cases like transfers mid-rebase, contracts that don't expect changing balances, and gas efficiency for the rebase operation itself.</p>
             <p>I led the full lifecycle: architecture design, implementation, coordinating multiple external security audits, and the production mainnet deployment. At peak, the bridge held over $2B in TVL across ETH and stablecoins.</p>
         </div>
 
-        <h3 class="section-heading">Open Source</h3>
-        <div class="projects-grid">
-            <div class="project-card">
-                <a href="https://github.com/blast-io/blast" target="_blank">
-                    <div class="project-name">blast <span class="arrow">&nearr;</span></div>
-                    <div class="project-desc">The full Blast L2 stack &mdash; a modified Optimism fork with custom geth changes for native yield rebasing, blast-specific bridge contracts, and precompiles. Contains both the node software (Go) and the L1/L2 smart contracts (Solidity).</div>
-                    <div class="project-meta">
-                        <span class="stars">103</span>
-                        <span>Go / Solidity</span>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/blast-io/deployment" target="_blank">
-                    <div class="project-name">deployment <span class="arrow">&nearr;</span></div>
-                    <div class="project-desc">Docker-based deployment tooling for running Blast nodes. Includes configurations for both mainnet and Sepolia testnet, environment templates, and docker-compose orchestration for spinning up full L2 infrastructure.</div>
-                    <div class="project-meta">
-                        <span class="stars">81</span>
-                        <span>Docker</span>
-                    </div>
-                </a>
+        <div class="contracts-section">
+            <h3 class="section-heading">Yield Managers (L1)</h3>
+            <p class="description" style="margin-bottom:16px"><p>The L1 contracts that route bridged assets into yield strategies, track returns, and handle insurance against negative yield events like Lido slashing.</p></p>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x98078db053902644191f93988341E31289E1C8FE" target="_blank">
+                        <span class="contract-name">ETHYieldManager</span>
+                        <span class="contract-address">0x9807...8FE</span>
+                    </a>
+                </div>
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0xa230285d5683C74935aD14c446e137c8c8828438" target="_blank">
+                        <span class="contract-name">USDYieldManager</span>
+                        <span class="contract-address">0xa230...8438</span>
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="contracts-section">
-            <h3 class="section-heading">L1 Contracts (Ethereum)</h3>
+            <h3 class="section-heading">Rebasing Tokens (L2)</h3>
+            <p class="description" style="margin-bottom:16px"><p>Custom token contracts on Blast L2 whose balances automatically adjust as yield accrues on L1. Built on share-based accounting to handle rebases atomically across all holders.</p></p>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <span class="contract-name">WETH</span>
+                    <span class="contract-address">0x4300...0004</span>
+                </div>
+                <div class="contract-item">
+                    <span class="contract-name">USDB</span>
+                    <span class="contract-address">0x4300...0003</span>
+                </div>
+                <div class="contract-item">
+                    <span class="contract-name">nrETH</span>
+                    <span class="contract-address">0x9D02...aF7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">Bridge Infrastructure (L1)</h3>
+            <p class="description" style="margin-bottom:16px"><p>The core bridge and messaging contracts on Ethereum that handle deposits, withdrawals, cross-chain messages, and state proving.</p></p>
             <div class="contracts-list">
                 <div class="contract-item">
                     <a href="https://etherscan.io/address/0x3a05E5d33d7Ab3864D53aaEc93c8301C1Fa49115" target="_blank">
@@ -64,18 +81,6 @@
                     <a href="https://etherscan.io/address/0x0Ec68c5B10F21EFFb74f2A5C61DFe6b08C0Db6Cb" target="_blank">
                         <span class="contract-name">OptimismPortal</span>
                         <span class="contract-address">0x0Ec6...b6Cb</span>
-                    </a>
-                </div>
-                <div class="contract-item">
-                    <a href="https://etherscan.io/address/0x98078db053902644191f93988341E31289E1C8FE" target="_blank">
-                        <span class="contract-name">ETHYieldManager</span>
-                        <span class="contract-address">0x9807...8FE</span>
-                    </a>
-                </div>
-                <div class="contract-item">
-                    <a href="https://etherscan.io/address/0xa230285d5683C74935aD14c446e137c8c8828438" target="_blank">
-                        <span class="contract-name">USDYieldManager</span>
-                        <span class="contract-address">0xa230...8438</span>
                     </a>
                 </div>
                 <div class="contract-item">
@@ -91,22 +96,16 @@
                     </a>
                 </div>
             </div>
+        </div>
 
-            <h3 class="section-heading">L2 Contracts (Blast)</h3>
-            <div class="contracts-list">
-                <div class="contract-item">
-                    <span class="contract-name">L2BlastBridge</span>
-                    <span class="contract-address">0x4300...0005</span>
-                </div>
-                <div class="contract-item">
-                    <span class="contract-name">USDB</span>
-                    <span class="contract-address">0x4300...0003</span>
-                </div>
-                <div class="contract-item">
-                    <span class="contract-name">WETH</span>
-                    <span class="contract-address">0x4300...0004</span>
-                </div>
-            </div>
+        <div class="contracts-section">
+            <h3 class="section-heading">Blast App &amp; Smart Wallets</h3>
+            <p class="description" style="margin-bottom:16px"><p>The Blast mobile app uses smart contract wallets controlled by smartphone passkeys (WebAuthn/FIDO2). The challenge is that passkeys use the secp256r1 curve, which Ethereum doesn't natively support &mdash; so we built custom on-chain signature verification to bridge the gap. This lets users sign transactions with their phone's biometrics (Face ID, fingerprint) without ever managing a seed phrase, while keeping full self-custody through the smart wallet contract. The cryptographic layer handles key rotation, recovery flows, and batched transaction execution.</p></p>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">Tokenomics &amp; Airdrop</h3>
+            <p class="description" style="margin-bottom:16px"><p>The Blast airdrop distributed tokens to community members through an automated reward system. Rather than a simple snapshot, the tokenomics app tracked multiple criteria &mdash; bridge deposits, on-chain activity, dApp usage, and referral contributions &mdash; and computed allocations dynamically across seasons. The distribution contracts handled merkle-based claims, vesting schedules, and the on-chain mechanics of getting tokens to hundreds of thousands of eligible wallets in a gas-efficient way.</p></p>
         </div>
 
         <footer>

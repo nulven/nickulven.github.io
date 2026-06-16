@@ -28,7 +28,8 @@
         </div>
 
         <div class="contracts-section">
-            <h3 class="section-heading">Contracts (Ethereum)</h3>
+            <h3 class="section-heading">Blur Exchange</h3>
+            <p class="description" style="margin-bottom:16px"><p>The original Blur exchange contract. Handles order matching, NFT transfers, and payment settlement for the marketplace. Built to prioritize execution speed and reliability for high-frequency NFT traders.</p></p>
             <div class="contracts-list">
                 <div class="contract-item">
                     <a href="https://etherscan.io/address/0x000000000000ad05ccc4f10045630fb830b95127" target="_blank">
@@ -37,21 +38,9 @@
                     </a>
                 </div>
                 <div class="contract-item">
-                    <a href="https://etherscan.io/address/0xb2ecfE4E4D61f8790bbb9DE2D1259B9e2410CEA5" target="_blank">
-                        <span class="contract-name">Blur Exchange V2</span>
-                        <span class="contract-address">0xb2ec...CEA5</span>
-                    </a>
-                </div>
-                <div class="contract-item">
                     <a href="https://etherscan.io/address/0x0000000000A39bb272e79075ade125fd351887Ac" target="_blank">
-                        <span class="contract-name">Blur Bidding Pool</span>
+                        <span class="contract-name">Bidding Pool</span>
                         <span class="contract-address">0x0000...87Ac</span>
-                    </a>
-                </div>
-                <div class="contract-item">
-                    <a href="https://etherscan.io/address/0x29469395eaf6f95920e59f858042f0e28d98a20b" target="_blank">
-                        <span class="contract-name">Blend (Lending)</span>
-                        <span class="contract-address">0x2946...a20b</span>
                     </a>
                 </div>
                 <div class="contract-item">
@@ -60,6 +49,39 @@
                         <span class="contract-address">0x39da...d541</span>
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">Blur Exchange V2</h3>
+            <p class="description" style="margin-bottom:16px"><p>A ground-up redesign of the exchange focused on gas efficiency. Introduced aggressive calldata packing &mdash; encoding trade parameters into tightly packed byte sequences instead of standard ABI encoding &mdash; along with optimized storage layouts and custom error handling. The result was a significant reduction in per-trade gas costs, which matters when the contract processes millions of transactions.</p></p>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0xb2ecfE4E4D61f8790bbb9DE2D1259B9e2410CEA5" target="_blank">
+                        <span class="contract-name">Blur Exchange V2</span>
+                        <span class="contract-address">0xb2ec...CEA5</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">Blend</h3>
+            <p class="description" style="margin-bottom:16px"><p>Blur's NFT lending protocol. Blend enables perpetual loans backed by NFT collateral with no expiry dates, fixed rates, or oracle dependencies. Lenders can trigger a Dutch auction to exit their position, and borrowers can refinance at any time. The design eliminates the liquidation cascades that plagued earlier NFT lending protocols.</p></p>
+            <div class="contracts-list">
+                <div class="contract-item">
+                    <a href="https://etherscan.io/address/0x29469395eaf6f95920e59f858042f0e28d98a20b" target="_blank">
+                        <span class="contract-name">Blend</span>
+                        <span class="contract-address">0x2946...a20b</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contracts-section">
+            <h3 class="section-heading">BLUR Token</h3>
+            <p class="description" style="margin-bottom:16px"><p>The BLUR token was distributed to the community through a multi-phase airdrop tied to marketplace activity. Rather than a one-time drop, the airdrop was structured as a series of seasons where users earned care packages based on their trading activity, listing behavior, and loyalty to the platform. The system incentivized real usage over farming &mdash; rewarding traders who consistently listed and bid on NFTs through Blur. The token contract handles the ERC-20 mechanics, vesting schedules, and the claim process that let hundreds of thousands of wallets redeem their allocations on-chain.</p></p>
+            <div class="contracts-list">
                 <div class="contract-item">
                     <a href="https://etherscan.io/address/0x5283d291dbcf85356a21ba090e6db59121208b44" target="_blank">
                         <span class="contract-name">BLUR Token</span>
