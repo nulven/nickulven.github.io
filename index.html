@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/portrait.png" type="image/png">
 </head>
 <body>
     <div class="spotlight" id="spotlight"></div>
@@ -16,9 +16,15 @@
     <div class="site-wrapper">
         <header class="sidebar">
             <div>
+                <img src="assets/portrait.png" alt="Nick Ulven" class="portrait">
                 <h1>Nick Ulven</h1>
                 <p class="tagline">Smart Contract Engineer</p>
                 <p class="bio">I build infrastructure for decentralized systems &mdash; bridges, exchanges, and privacy-preserving protocols on Ethereum.</p>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    Open to opportunities
+                </div>
 
                 <nav class="sidebar-nav">
                     <a href="#about" class="active">About</a>
@@ -43,13 +49,13 @@
         <main class="main-content">
             <section id="about" class="section">
                 <h2 class="section-label">About</h2>
-                <p style="font-size:0.88rem;line-height:1.75;margin-bottom:12px;color:#888">
-                    I'm a protocol engineer focused on smart contracts, cryptography, and distributed systems. I've spent the last several years building core infrastructure in crypto &mdash; from NFT exchange contracts processing billions in volume at <a href="blur.html" style="color:#d4d4d4;border-bottom:1px solid #333;transition:color 0.25s">Blur</a>, to a cross-chain bridge securing $2B in TVL at <a href="blast.html" style="color:#d4d4d4;border-bottom:1px solid #333;transition:color 0.25s">Blast</a>.
+                <p class="about-text">
+                    I'm a protocol engineer focused on smart contracts, cryptography, and distributed systems. I've spent the last several years building core infrastructure in crypto &mdash; from NFT exchange contracts processing billions in volume at <a href="blur.html" class="inline-link">Blur</a>, to a cross-chain bridge securing $2B in TVL at <a href="blast.html" class="inline-link">Blast</a>.
                 </p>
-                <p style="font-size:0.88rem;line-height:1.75;margin-bottom:12px;color:#888">
-                    Before that, I researched zero-knowledge proof systems at the <a href="ethereum-foundation.html" style="color:#d4d4d4;border-bottom:1px solid #333;transition:color 0.25s">Ethereum Foundation</a>, built the Ethereum&ndash;StarkNet DAI bridge at <a href="starkware.html" style="color:#d4d4d4;border-bottom:1px solid #333;transition:color 0.25s">Starkware</a>, and worked on blockchain domain infrastructure at <a href="namebase.html" style="color:#d4d4d4;border-bottom:1px solid #333;transition:color 0.25s">Namebase</a>.
+                <p class="about-text">
+                    Before that, I researched zero-knowledge proof systems at the <a href="ethereum-foundation.html" class="inline-link">Ethereum Foundation</a>, built the Ethereum&ndash;StarkNet DAI bridge at <a href="starkware.html" class="inline-link">Starkware</a>, and worked on blockchain domain infrastructure at <a href="namebase.html" class="inline-link">Namebase</a>.
                 </p>
-                <p style="font-size:0.88rem;line-height:1.75;color:#888">
+                <p class="about-text">
                     I studied at MIT before leaving in 2021 to work in crypto full-time.
                 </p>
             </section>
@@ -140,9 +146,6 @@
                 </div>
             </section>
 
-            <footer>
-                <p>Built with HTML &amp; CSS.</p>
-            </footer>
         </main>
     </div>
 
