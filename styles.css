@@ -506,6 +506,42 @@ body::after {
     color: #1a1715;
 }
 
+.page-header-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.page-header-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+.page-logo {
+    height: 44px;
+    max-width: 120px;
+    width: auto;
+    object-fit: contain;
+}
+
+.page-logo-dark {
+    background: #1a1715;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-logo-dark .page-logo {
+    height: 30px;
+}
+
 .page-header h1 {
     font-size: 1.8rem;
     font-weight: 700;
